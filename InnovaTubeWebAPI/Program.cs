@@ -13,7 +13,7 @@ builder.Services.AddCors(opciones =>
 {
     opciones.AddDefaultPolicy(politica =>
     {
-        politica.WithOrigins("https://innovatube-webapp-production.up.railway.app").AllowAnyHeader().AllowAnyMethod();
+        politica.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
     });
 });
 
