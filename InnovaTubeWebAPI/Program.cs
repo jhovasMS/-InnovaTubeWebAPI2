@@ -14,7 +14,7 @@ builder.Services.AddCors(opciones =>
 {
     opciones.AddPolicy(name: permitirOrigenesEspecificos, politica =>
     {
-        politica.WithOrigins("https://innovatube-webapp-production.up.railway.app").AllowAnyHeader().AllowAnyMethod();
+        politica.WithOrigins("https://innovatube-webapp-production.up.railway.app/").AllowAnyHeader().AllowAnyMethod();
     });
 });
 
