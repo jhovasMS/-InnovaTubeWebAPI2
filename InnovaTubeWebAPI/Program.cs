@@ -8,16 +8,17 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 
 //var origenesPermitidos = builder.Configuration.GetValue<string>("OrigenesPermitidos")!.Split(",");
+var permitirOrigenesEspecificos = "permitirOrigenesEspecificos";
 
 builder.Services.AddCors(opciones =>
 {
-    opciones.AddDefaultPolicy(politica =>
+    opciones.AddPolicy(name: permitirOrigenesEspecificos, politica =>
     {
-        politica.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
+        politica.WithOrigins("https://innovatube-webapp-production.up.railway.app").AllowAnyHeader().AllowAnyMethod();
     });
 });
 
-var connectionStrings = builder.Configuration.GetValue<string>("ConnectionStrings");
+//var connectionStrings = builder.Configuration.GetValue<string>("ConnectionStrings");
 builder.Services.AddDbContext<ApplicationDbContext>(opciones =>
     opciones.UseNpgsql("name=DefaultConnection"));
 
@@ -27,7 +28,7 @@ var app = builder.Build();
 
 app.UseHttpsRedirection();
 
-app.UseCors();
+app.UseCors(permitirOrigenesEspecificos);
 
 app.UseAuthorization();
 
