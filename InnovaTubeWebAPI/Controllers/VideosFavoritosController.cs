@@ -23,11 +23,11 @@ namespace InnovaTubeWebAPI.Controllers
 
 
         [HttpPost]
-        public async Task<CreatedResult> Post([FromBody] VideoFavorito videoFavorito)
+        public async Task<ActionResult> Post([FromBody] VideoFavorito videoFavorito)
         {
             context.Add(videoFavorito);
             await context.SaveChangesAsync();
-            return Created();
+            return Ok();
         }
 
 
