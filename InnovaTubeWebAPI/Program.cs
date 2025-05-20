@@ -28,10 +28,10 @@ var app = builder.Build();
 
 app.UseHttpsRedirection();
 
-app.UseCors(permitirOrigenesEspecificos);
-
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.UseCors(permitirOrigenesEspecificos);
 
 app.Run();
