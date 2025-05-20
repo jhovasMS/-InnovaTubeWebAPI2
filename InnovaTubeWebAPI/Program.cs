@@ -7,13 +7,13 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 
-var origenesPermitidos = builder.Configuration.GetValue<string>("OrigenesPermitidos")!.Split(",");
+//var origenesPermitidos = builder.Configuration.GetValue<string>("OrigenesPermitidos")!.Split(",");
 
 builder.Services.AddCors(opciones =>
 {
     opciones.AddDefaultPolicy(politica =>
     {
-        politica.WithOrigins(origenesPermitidos).AllowAnyHeader().AllowAnyMethod();
+        politica.WithOrigins("https://innovatube-webapp-production.up.railway.app").AllowAnyHeader().AllowAnyMethod();
     });
 });
 
