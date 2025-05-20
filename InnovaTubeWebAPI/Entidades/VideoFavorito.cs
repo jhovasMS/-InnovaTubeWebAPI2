@@ -3,6 +3,6 @@
     public class VideoFavorito
     {
         public int Id { get; set; }
-        public string IdVideoYouTube { get; set; }
+        public required string IdVideoYouTube { get; set; }
     }
 }
